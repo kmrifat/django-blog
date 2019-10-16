@@ -101,6 +101,13 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+## ... some other Django settings... ##
+
+# User substitution
+# https://docs.djangoproject.com/en/1.11/topics/auth/customizing/#auth-custom-user
+
+AUTH_USER_MODEL = 'website.User'
+
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
 

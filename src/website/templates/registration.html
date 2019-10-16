@@ -27,12 +27,28 @@
                     <form class=mt-5 method="post" action=".">
                         {% csrf_token %}
                         <h3>Registration</h3>
-                        {{ form|crispy }}
+
+                        <div class="form-row">
+                            <div class="col-md-6">
+                                {{ form.first_name|as_crispy_field }}
+                            </div>
+                            <div class="col-md-6">
+                                {{ form.last_name|as_crispy_field }}
+                            </div>
+                        </div>
+
+                        {{ form.username|as_crispy_field }}
+
+                        {{ form.email|as_crispy_field }}
+                        {{ form.password1|as_crispy_field }}
+                        {{ form.password2|as_crispy_field }}
+
                         <button type=submit class="btn btn-primary">Sign Up</button>
                     </form>
 
                     <div class="border-top mt-5">
-                        <small class="text-muted">Already has an account ? <a href="{% url 'website:login' %}">Login </a> </small>
+                        <small class="text-muted">Already has an account ? <a
+                                href="{% url 'website:login' %}">Login </a> </small>
                     </div>
 
                 </div>
