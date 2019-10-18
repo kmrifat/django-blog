@@ -7,21 +7,16 @@
 {% block content %}
 
     <section class=page>
-        <div class=header><h2 class="m-title text-center">Login <span>To contact us use the form bellow</span></h2>
+        <div class=header><h2 class="m-title text-center">Log out <span>To contact us use the form bellow</span></h2>
         </div>
         <div class=container>
             <div class="row justify-content-md-center">
                 <div class="col-md-6 mt-5">
-                    <form method="post" class=mt-5>
-                        {% csrf_token %}
-                        <h3>Login</h3>
-                        {{ form|crispy }}
-                        <button type=submit class="btn btn-primary">Submit</button>
-                    </form>
+                   <h2>You are logged out</h2>
 
                     <div class="border-top mt-5">
                         <small class="text-muted">Don't have an account ? <a
-                                href="{% url 'website:registration' %}">Register Now </a> </small>
+                                href="{% url 'website:login' %}">Login </a> </small>
                     </div>
                 </div>
 

@@ -1,17 +1,16 @@
 from django.contrib import messages
-from django.contrib.auth.forms import UserCreationForm
-from django.http import HttpResponse, HttpResponseRedirect
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
+from django.utils.decorators import method_decorator
 
-from .form.registration import UserRegisterForm
-from .models import Contact
-from .form.contact import ContactForm
+from ..form.registration import UserRegisterForm
+from ..models import Contact
+from ..form.contact import ContactForm
 
 
 class WebSiteView:
     # Create your views here.
     def home(self, request):
-
         return render(request, "index.html", {'home': True})
 
     def about(self, request):
@@ -28,9 +27,6 @@ class WebSiteView:
         else:
             form = ContactForm()
             return render(request, "contact.html", {'form': form})
-
-    def login(self, request):
-        return render(request, "login.html", {})
 
     def registration(self, request):
         if request.method == 'POST':

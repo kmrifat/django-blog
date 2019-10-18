@@ -1,0 +1,27 @@
+{% extends "base_layout.html" %}
+
+{% block title %} Comments  {% endblock %}
+
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+    <section class=page>
+        <div class=header><h2 class="m-title text-center">Login <span>To contact us use the form bellow</span></h2>
+        </div>
+        <div class="container-fluid">
+            <div class="row ">
+                <div class="col-md-2">
+                   {% include 'dashboard/__sidebar.html' %}
+                </div>
+
+                <div class="col-md-10">
+                    <h2>Profile</h2>
+                    <img src="{{ user.profile.image.url }}" class="img-fluid img-thumbnail" alt="">
+                </div>
+            </div>
+        </div>
+    </section>
+    <br><br><br><br>
+    <hr>
+{% endblock %}

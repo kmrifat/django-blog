@@ -1,0 +1,79 @@
+{% extends "base_layout.html" %}
+
+{% block title %} Settings  {% endblock %}
+
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+    <section class=page>
+        <div class=header><h2 class="m-title text-center">Settings <span>To contact us use the form bellow</span></h2>
+        </div>
+        <div class="container-fluid">
+            <div class="row ">
+                <div class="col-md-2">
+                    {% include 'dashboard/__sidebar.html' %}
+                </div>
+
+                <div class="col-md-10">
+                    <div class="clearfix pt-2 pb-2">
+                        <div class="float-left">
+                            <h1>Settings</h1>
+                        </div>
+
+                        <a href="{% url 'website:update-profile' %}" class="btn btn-primary float-right">Update
+                            Profile</a>
+                    </div>
+
+                    <div class="row justify-content-center">
+                        <div class="col-md-6">
+                            {% if messages %}
+                                {% for message in messages %}
+                                    <div class="alert alert-{{ message.tags }} alert-dismissible fade show"
+                                         role="alert">
+                                        <strong>Holy guacamole!</strong> {{ message }}
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+                    </div>
+
+
+                    <div class="row justify-content-center p-3">
+                        <div class="col-md-12">
+                            <ul class="nav nav-tabs">
+                                <li class="nav-item">
+                                    <a class="nav-link active" href="{% url 'website:settings' %}">Change Password</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Change Username</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Change Email</a>
+                                </li>
+
+                            </ul>
+                        </div>
+
+                        <div class="col-md-4 pt-5">
+                            <form method="post" action=".">
+                                {% csrf_token %}
+                                <h3>Change Password</h3>
+                                {{ form|crispy }}
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </form>
+                        </div>
+
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <br><br><br><br>
+    <hr>
+{% endblock %}

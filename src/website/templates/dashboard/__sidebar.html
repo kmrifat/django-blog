@@ -1,0 +1,17 @@
+<div class="list-group">
+    <a href="{% url 'website:dashboard' %}" class="list-group-item list-group-item-action {% if request.resolver_match.url_name == "dashboard" %} active {% endif %}">
+        <i class="fas fa-tachometer-alt"></i> Dashboard
+    </a>
+    <a href="{% url 'website:blog-posts' %}" class="list-group-item list-group-item-action {% if request.resolver_match.url_name == "blog-posts" %} active {% endif %}">
+        <i class="fas fa-blog"></i> Blog Post
+    </a>
+    <a href="{% url 'website:comments' %}" class="list-group-item list-group-item-action {% if request.resolver_match.url_name == "comments" %} active {% endif %}">
+        <i class="fas fa-comments"></i> Comments
+    </a>
+    <a href="{% url 'website:profile' %}" class="list-group-item list-group-item-action {% if request.resolver_match.url_name == "profile" %} active {% endif %}">
+        <i class="fas fa-user-cog"></i> Profile
+    </a>
+    <a href="{% url 'website:settings' %}" class="list-group-item list-group-item-action {% if request.resolver_match.url_name == "settings" %} active {% endif %}">
+        <i class="fas fa-cogs"></i> Settings
+    </a>
+</div>

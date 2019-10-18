@@ -7,6 +7,7 @@ from django.contrib.auth.forms import UserCreationForm
 
 from django.core.exceptions import ValidationError
 
+from ..models import Profile
 from ..models import User
 
 
@@ -18,3 +19,18 @@ class UserRegisterForm(UserCreationForm):
     class Meta:
         model = User
         fields = ['username', 'email', 'password1', 'password2', 'first_name', 'last_name']
+
+
+class UserUpdateForm(forms.ModelForm):
+    first_name = forms.CharField(required=True)
+    last_name = forms.CharField(required=True)
+
+    class Meta:
+        model = User
+        fields = ['first_name', 'last_name']
+
+
+class ProfileUpdateForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = ['image']

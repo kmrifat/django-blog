@@ -1,0 +1,65 @@
+{% extends "base_layout.html" %}
+
+{% block title %} Profile  {% endblock %}
+
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+    <section class=page>
+        <div class=header><h2 class="m-title text-center">My Profile <span>This is my profile</span></h2>
+        </div>
+        <div class="container-fluid">
+            <div class="row ">
+                <div class="col-md-2">
+                    {% include 'dashboard/__sidebar.html' %}
+                </div>
+
+                <div class="col-md-10">
+                    <div class="clearfix pt-2 pb-2">
+                        <div class="float-left">
+                            <h1>Profile</h1>
+                        </div>
+
+                        <a href="{% url 'website:update-profile' %}" class="btn btn-primary float-right">Update
+                            Profile</a>
+                    </div>
+
+                    <div class="row justify-content-center">
+                        <div class="col-md-6">
+                            {% if messages %}
+                                {% for message in messages %}
+                                    <div class="alert alert-{{ message.tags }} alert-dismissible fade show"
+                                         role="alert">
+                                        <strong>Holy guacamole!</strong> {{ message }}
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <div class="row justify-content-center">
+
+                        <div class="col-md-2">
+                            <img src="{{ user.profile.image.url }}" class="img-fluid img-thumbnail" alt="">
+                        </div>
+                        <div class="col-md-4">
+                            <h1>{{ user.first_name }} {{ user.last_name }}</h1>
+                            <p>{{ user.email }}</p>
+                            <p>{{ user.username }}</p>
+                            <p>Status {% if user.is_active %} Active {% else %} InActive {% endif %}</p>
+                            <p>Registered At : {{ user.date_joined }}</p>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <br><br><br><br>
+    <hr>
+{% endblock %}
